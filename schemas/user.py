@@ -1,17 +1,14 @@
 from pydantic import BaseModel, EmailStr
 
-class UserBase(BaseModel):
-    username: str
-    email: EmailStr
-
+#то что принимает
 class UserCreate(BaseModel):
+    email: EmailStr
     password: str
 
+#то что отдает(чтобы не запалить пароль например)
 class UserOut(BaseModel):
     id: int
-    is_active: bool
-    is_seller: bool
+    email: EmailStr
 
     class Config:
         from_attributes = True
-        
